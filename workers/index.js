@@ -26,20 +26,20 @@ exports.taskScheduler = () => {
 
 	console.log('Scheduler Started');
 
-	const generate = new CronJob('*/4 * * * * *', function() {
+	const generate = new CronJob('*/1 * * * *', function() {
 			
 		_this.generateEvents()
 
 	});
 
 	// every 14 minutes
-	const fourteen = new CronJob('*/8 * * * * *', function() {
+	const fourteen = new CronJob('*/14 * * * *', function() {
 		generate.stop();
 		this.stop();
 	});
 
 	// every 21 minutes
-	const twenty_one = new CronJob('*/11 * * * * *', function() {
+	const twenty_one = new CronJob('*/21 * * * *', function() {
 		generate.start();
 		fourteen.start()
 	});
